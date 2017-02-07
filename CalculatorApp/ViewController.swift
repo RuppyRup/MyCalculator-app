@@ -9,11 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let score:Int = 3
+    
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        var myscore:Int = score + 1
+        print("My test score is \(myscore)")
+        
+            }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
