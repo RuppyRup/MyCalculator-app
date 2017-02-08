@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         
         var myscore:Int = score + 1
         print("My test score is \(myscore)")
+        print("My new mod is this...")
         
             }
 
