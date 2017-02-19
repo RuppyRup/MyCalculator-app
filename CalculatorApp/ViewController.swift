@@ -23,8 +23,6 @@ class ViewController: UIViewController {
     var currentMode:modes = .not_set
     var savedNum:Int = 0
     var lastButtonWasMode:Bool = false
-    
-    
 
 
     override func viewDidLoad() {
@@ -41,13 +39,20 @@ class ViewController: UIViewController {
         changeMode(newMode: .addition)
     }
 
+    @IBAction func didPressDivide(_ sender: Any) {
+        changeMode(newMode: .division)
+    }
+    
+    
     @IBAction func didPressSubtract(_ sender: Any) {
         changeMode(newMode: .subtraction)
     }
     
+    
     @IBAction func didPressMultiply(_ sender: Any) {
         changeMode(newMode: .multiplication)
     }
+    
     
     @IBAction func didPressEquals(_ sender: Any) {
         guard let labelInt:Int = Int(labelString) else {
@@ -64,6 +69,9 @@ class ViewController: UIViewController {
         }
         else if (currentMode == .multiplication) {
             savedNum = savedNum * labelInt
+        }
+        else if (currentMode == .division) {
+            savedNum = savedNum / labelInt
         }
         currentMode = .not_set
         labelString = "\(savedNum)"
@@ -105,7 +113,10 @@ class ViewController: UIViewController {
         if (currentMode == .not_set) {
             savedNum = labelInt
         }
-        label.text = "\(labelInt)"
+        let formatter:NumberFormatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        let num:NSNumber = NSNumber(value: labelInt)
+        label.text = formatter.string(from: num)
     }
     
     func changeMode(newMode:modes) {
